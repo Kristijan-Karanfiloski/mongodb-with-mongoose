@@ -22,6 +22,11 @@ app.use(express.json());
 //SERVING STATIC FILES FROM A SERVER //////////////////
 app.use(express.static(`${__dirname}/public`));
 
+app.use((req, res, next) => {
+  console.log("HEADERS", req.headers);
+  next();
+});
+
 //////////////// MOUNTING OUR ROUTES //////////////////
 
 app.use("/api/v1/tours", tourRouter);
